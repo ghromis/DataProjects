@@ -37,10 +37,8 @@ data2$Count <- Count[[1]][match(data2$iso2c, Count[[2]])]
 regions <- c("1A", "S3", "Z4", "4E", "XC", "Z7", "7E", "EU", "XE", "XD", "XR", "XS", "ZJ",
              "XJ", "XL", "XO", "XM", "XN", "ZQ", "XQ", "XP", "XU", "OE", "S4", "S2", "S1",
              "8S", "ZG", "ZF", "XT")
+data3 <- subset(data2, Count >=0.75*max(Count) & iso2c %in% regions == FALSE)
 write.table(data3, file="data2.csv", sep=";")
-
-qplot(year, NY.GDP.MKTP.KD.ZG, data = data3, geom = "line", color=country, xlab = "Year",
-      ylab = "Growth Rates", title="Annual GDP Growth rate (%)")
 
 ggplot(data3, aes(year, NY.GDP.MKTP.KD.ZG, color = country)) + geom_line() + 
   xlab('Year') + ylab('GDP growth rate') +
