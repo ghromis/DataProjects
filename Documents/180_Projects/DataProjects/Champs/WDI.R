@@ -3,6 +3,8 @@ library(WDI)
 library(data.table)
 library(RColorBrewer)
 library (scales)
+library(stringr)
+library(reshape2)
 
 # NY.GDP.MKTP.KD.ZG -> "GDP growth (annual %)"  
 DF <- WDI(country=c("XD","XM","XT","XN"), indicator="NY.GDP.MKTP.KD.ZG", start=1961, 
@@ -37,7 +39,7 @@ data2$Count <- Count[[1]][match(data2$iso2c, Count[[2]])]
 regions <- c("1A", "S3", "Z4", "4E", "XC", "Z7", "7E", "EU", "XE", "XD", "XR", "XS", "ZJ",
              "XJ", "XL", "XO", "XM", "XN", "ZQ", "XQ", "XP", "XU", "OE", "S4", "S2", "S1",
              "8S", "ZG", "ZF", "XT")
-data3 <- subset(data2, Count >=0.75*max(Count) & iso2c %in% regions == FALSE)
+data3 <- subset(data2, Count >=0.9*max(Count) & iso2c %in% regions == FALSE)
 write.table(data3, file="data2.csv", sep=";")
 
 ggplot(data3, aes(year, NY.GDP.MKTP.KD.ZG, color = country)) + geom_line() + 
@@ -47,7 +49,18 @@ ggplot(data3, aes(year, NY.GDP.MKTP.KD.ZG, color = country)) + geom_line() +
   geom_line(data=subset(data3, country == "World"), colour="black", size=1) +
   guides(colour=guide_legend(override.aes=list(
     colour=c(hue_pal()(11)[1:10], "black"), size=c(rep(1, 10), 1.5))))
+
   
+# [94,] "GDP per capita (constant 2000 US$)" NY.GDP.PCAP.KD
+#  [97,] "GDP per capita, PPP (current international $)"  NY.GDP.PCAP.PP.CD
 
-
+beg <-  WDI(indicator="NY.GDP.PCAP.PP.CD", start = 1980, end = 1980)
+end <-  WDI(indicator="NY.GDP.PCAP.PP.CD", start = 2012, end = 2012)
+merged <- merge(beg, end, all = TRUE)
+merged <- subset(merged, iso2c %in% regions == FALSE)
+reshaped <- na.omit(dcast(merged, country ~ year, value.var="NY.GDP.PCAP.PP.CD"))
+names(reshaped) <- c("country", "beg", "end")
+total <- transform(reshaped, new = end / beg)
+total <- total[order(total$new, decreasing = T),]
+head(total, 10)
 
