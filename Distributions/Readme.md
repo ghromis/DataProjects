@@ -21,7 +21,8 @@ probt <- dt(x, df=100)
 plot(x, probt, type='l', col='dark green', xlab = "", ylab='', xaxt = "n", yaxt="n",lwd = 2.5,
      xlim = c(-5,5), ylim=c(0, 0.4))
 legend(2.7, 0.4, c("df=1", "df=5", "df=100"), lty=1, lwd= 2.5,col=c("blue","red", "dark green"))
-'''
+```
+
 
 ```R
 # Chi-Squared
@@ -39,7 +40,7 @@ curve(dchisq(x, 14), xlim = c(0,25), ylim=c(0, 0.5),col='purple',
 legend(15, 0.5, title = "Degrees of Freedom",
        c("k=2", "k=4", "k=9", "k=14"),
        lty=1, lwd= 2.5,col=c("blue","green", "red", "purple"))
-'''
+```
 
 ```R
 # Geometric
@@ -54,7 +55,7 @@ par(new=TRUE)
 probg <- dgeom(x, 0.8)
 plot(x, probg, type='l', col='dark green', lwd =2, xlab="",ylab="", ylim=c(0, 0.8))
 legend(8, 0.8, c("p=0.2","p=0.5","p=0.8"), lty=1, lwd= 2,col=c("blue","red", "dark green"))
-'''
+```
 
 ```R
 # Binomial
@@ -72,7 +73,7 @@ plot(x, probx, type='h', col='dark green', main = "Binomial Distribution", xlab 
      ylab="", ylim=c(0, 0.18))
 legend(66, 0.18, c("n=20, p=0.5","n=50, p=0.5","n=100, p=0.5"), lty=1, lwd= 2,
        col=c("blue","red", "dark green"))
-'''
+```
 
 ```R
 # Negative Binomial
@@ -89,7 +90,7 @@ plot(x, probx, type='h', col='dark green', yaxt='n', xlab = "",
      ylab="Probability", ylim=c(0, 0.1))
 legend(66, 0.1, c("n=10, p=0.5","n=40, p=0.5","n=70, p=0.5"), lty=1, lwd= 2,
        col=c("blue","red", "dark green"))
-'''
+```
 
 ```R
 # Poisson
@@ -107,4 +108,4 @@ plot(x, probp, type='l', col='dark green', xlab = "", ylab='', xaxt = "n", yaxt=
      xlim = c(0,20), ylim=c(0, 0.4),lwd = 2.5)
 legend(15, 0.4, c(expression(lambda~"=1"),expression(lambda~"=5"),expression(lambda~"=10")),
        lty=1, lwd= 2.5,col=c("blue","red", "dark green"))
-'''
+```
