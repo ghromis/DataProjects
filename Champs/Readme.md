@@ -1,14 +1,14 @@
-
 I wanted to find out which countries had most consistent  and fastest growth in the last half century.
 
 There are 10 countries that had higher growth rate than the world average in at least 40 out of last 52 years.
 
 ![ScreenShot](https://raw.github.com/ghromis/DataProjects/master/Champs/Champs.jpeg)
-Data by the World Bank:
-Low-income economies ($1,035 or less)
-Lower-middle-income economies ($1,036 to $4,085)
-Upper-middle-income economies ($4,086 to $12,615)
-High-income economies ($12,616 or more)
+
+Data by the World Bank: <br>
+Low-income economies ($1,035 or less) <br>
+Lower-middle-income economies ($1,036 to $4,085) <br>
+Upper-middle-income economies ($4,086 to $12,615) <br>
+High-income economies ($12,616 or more) <br>
 
 As a group, fastest growing countries are middle income (especially upper middle income) countries.
 
