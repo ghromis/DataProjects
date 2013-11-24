@@ -1,3 +1,7 @@
+```
+technology: WDI library and ggplot.
+```
+
 I wanted to find out which countries had most consistent  and fastest growth in the last half century.
 
 There are 10 countries that had higher growth rate than the world average in at least 40 out of last 52 years.
@@ -25,4 +29,3 @@ So I wanted to see how these results correlate with non-income components of Hum
 
 ![ScreenShot](https://raw.github.com/ghromis/DataProjects/master/Champs/NonIncomeHDI.png)
 
-In this project I used WDI library and ggplot.
