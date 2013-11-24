@@ -1,6 +1,7 @@
-Tag cloud shows most frequent words in job titles on Angel List job board.
-
-I did this project in order to see how to work with API’s. Tag cloud implementation is in R.
+```
+technology: API’s, tag cloud implementation in R
+```
+Tag cloud shows most frequent words in job titles on Angel List job board (Nov 2013)
 
 ![ScreenShot](https://raw.github.com/ghromis/DataProjects/master/Cloud/Rplot.png)
 
