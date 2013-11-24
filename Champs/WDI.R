@@ -5,6 +5,7 @@ library(RColorBrewer)
 library (scales)
 library(stringr)
 library(reshape2)
+library(xtable)
 
 # NY.GDP.MKTP.KD.ZG -> "GDP growth (annual %)"  
 DF <- WDI(country=c("XD","XM","XT","XN"), indicator="NY.GDP.MKTP.KD.ZG", start=1961, 
@@ -62,5 +63,15 @@ reshaped <- na.omit(dcast(merged, country ~ year, value.var="NY.GDP.PCAP.PP.CD")
 names(reshaped) <- c("country", "beg", "end")
 total <- transform(reshaped, total.growth = end / beg)
 total <- total[order(total$total.growth, decreasing = T),]
+names(total) <- c("Country","GDP (1980)", "GDP (2012)", "Total GDP Growth")
 top <- head(total, 10)
+tbl <- xtable(top)
+digits(tbl)[c(2,5)] <- 0
+print(tbl, type = "html")
+
+print.xtable(tbl, type = getOption("xtable.type", "latex"),
+             file = getOption("xtable.file", "test_html_table"),
+             include.rownames = getOption("xtable.include.rownames", FALSE)
+             html.table.attributes = getOption("xtable.html.table.attributes","border=0"),
+             booktabs = getOption("xtable.booktabs", TRUE))
 
