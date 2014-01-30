@@ -63,15 +63,13 @@ reshaped <- na.omit(dcast(merged, country ~ year, value.var="NY.GDP.PCAP.PP.CD")
 names(reshaped) <- c("country", "beg", "end")
 total <- transform(reshaped, total.growth = end / beg)
 total <- total[order(total$total.growth, decreasing = T),]
-names(total) <- c("Country","GDP (1980)", "GDP (2012)", "Total GDP Growth")
+names(total) <- c("Country","GDP (1980)", "GDP (2012)", "Growth Multiple")
 top <- head(total, 10)
 tbl <- xtable(top)
-digits(tbl)[c(2,5)] <- 0
-print(tbl, type = "html")
 
-print.xtable(tbl, type = getOption("xtable.type", "latex"),
+print.xtable(tbl, type = getOption("xtable.type", "html"),
              file = getOption("xtable.file", "test_html_table"),
-             include.rownames = getOption("xtable.include.rownames", FALSE)
-             html.table.attributes = getOption("xtable.html.table.attributes","border=0"),
-             booktabs = getOption("xtable.booktabs", TRUE))
+             include.rownames = getOption("xtable.include.rownames", FALSE),
+             html.table.attributes = getOption("xtable.html.table.attributes","border=0"))
+           
 
